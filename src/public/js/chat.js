@@ -11,6 +11,7 @@ btnAdd.addEventListener('click', () => {
     }
     console.log("MENSAJE A ENVIAR" +  {message_add})
     socket.emit('newMessage',  message_add);
+    socket.emit('messageLogs',  message_add);
 })
 
 

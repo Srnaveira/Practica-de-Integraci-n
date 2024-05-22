@@ -56,10 +56,12 @@ socketServer.on('connection', async socket =>{
         try {
             console.log({ message })
             await messageModel.create(message);
+            const mensages= await messageModel.find({});
             socket.emit('newMessage', message);
+            socket.broadcast.emit('messageLogs', mensages);
         } catch (error) {
             console.error('Error al agregar el mensaje:', error.message);
-            socket.emit('newMessage', 'Error al agregar el mensaje');
+            socket.broadcast.emit('newMessage', 'Error al agregar el mensaje');
         }
     })
 

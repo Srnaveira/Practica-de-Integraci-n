@@ -43,7 +43,7 @@ router.get('/:pid', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         const { title, description, price, thumbnail, code, status, category, stock } = req.body
-        if(!title || !description || !price || !code || !category || !stock ){
+        if(!title || !description || !price || !code || !category || !stock ) {
             res.status(500).json({ message: "Faltan parametros", error: error.message});
         } else {
             let productAdd = await productsModel.create({title, description, price, thumbnail, code, status, category, stock})
